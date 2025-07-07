@@ -8,4 +8,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  // necessary for Docker (lets Vite be accessed from outside of its container)
+  server: {
+    host: '0.0.0.0',
+    port: 5173
+  }
 })
