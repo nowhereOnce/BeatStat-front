@@ -22,11 +22,13 @@ export default function MePage() {
             
             {/* Background */}
             <div className="absolute inset-0 z-0 bg-[url('background-gradient.png')] bg-cover filter grayscale-50"></div>
+
             {/* Gigant Title */}
-            <h1 className="absolute left-20 top-1/2 -translate-y-1/2 text-[7rem] font-black text-white opacity-10 pointer-events-none select-none text-right">
+            <h1 className="absolute left-20 top-1/2 -translate-y-1/2 text-[7rem] font-black text-black opacity-20 pointer-events-none select-none text-right">
                 Your<br />Top<br />Tracks
             </h1>
 
+            {/* Tracks List */}
             <div className='text-white flex z-10'>
                 <ul className='my-auto'>
                     {data?.tracks?.map((track, index) => (
@@ -46,6 +48,23 @@ export default function MePage() {
                         </li>
                     ))}
                 </ul>
+            </div>
+
+            {/* Artists image container:
+            This renders every artist image in reverse order
+            (because of the z-index seem broken when trying to modify the top appering elements) 
+            applies a 3d transformation and adds a shadow
+            */}
+            <div className="absolute right-50 top-1/2 -translate-y-1/2 opacity-10 pointer-events-none select-none grayscale flex flex-col-reverse">
+            {[...(data?.tracks || [])].slice().reverse().map((track, index) => (    
+                <div key={index} className={`relative -my-20 ${index % 2 === 0 ? '-translate-x-[20px]' : 'translate-x-[80px]'}`}>
+                <img
+                    src={track.artist_image}
+                    alt={`This is ${track.name}`}
+                    className="w-[300px] h-[300px] object-cover rounded-3xl rotate-x-50 rotate-z-45 drop-shadow-[20px_20px_10px_rgba(0,0,0,0.8)]"
+                />
+                </div>
+            ))}
             </div>
 
         </section>
