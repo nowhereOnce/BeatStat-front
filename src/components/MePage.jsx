@@ -18,26 +18,36 @@ export default function MePage() {
     if (error) return <div>Error: {error.message}</div>
 
     return(
-        <section className='min-h-screen flex justify-center bg-[url("background-gradient.png")] bg-cover'>
-            <div className='text-white'>
-                <h2 className='8x1 font-bold w-md'>This is another route from my page</h2>
-                <ul>
+        <section className='relative min-h-screen flex justify-center items-center overflow-hidden'>
+            
+            {/* Background */}
+            <div className="absolute inset-0 z-0 bg-[url('background-gradient.png')] bg-cover filter grayscale-50"></div>
+            {/* Gigant Title */}
+            <h1 className="absolute left-20 top-1/2 -translate-y-1/2 text-[7rem] font-black text-white opacity-10 pointer-events-none select-none text-right">
+                Your<br />Top<br />Tracks
+            </h1>
+
+            <div className='text-white flex z-10'>
+                <ul className='my-auto'>
                     {data?.tracks?.map((track, index) => (
-                    <li key={index} className="track-item">
-                        <img 
-                        src={track.image} 
-                        alt={`Portada de ${track.name}`} 
-                        width="100" 
-                        height="100" 
-                        />
-                        <div className="track-info">
-                        <h3>{track.name}</h3>
-                        <p>{track.artist}</p>
-                        </div>
-                    </li>
+                        /* each track */
+                        <li key={index} className="flex m-8">
+                            <span className="text-6xl font-bold w-20 text-right mr-6">{index + 1}.</span>
+                            <img 
+                                src={track.image} 
+                                alt={`Portada de ${track.name}`} 
+                                width="80" 
+                                height="80" 
+                            />
+                            <div className="ml-4">
+                                <h3 className='font-bold text-2xl'>{track.name}</h3>
+                                <p>{track.artist}</p>
+                            </div>
+                        </li>
                     ))}
                 </ul>
             </div>
+
         </section>
     );
 };
