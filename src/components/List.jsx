@@ -6,25 +6,25 @@ export default function List({ data }) {
     const [showAll, setShowAll] = useState(false)
 
     return (
-        <div className="flex flex-col my-[54.4px]">
+        <div className="flex flex-col">
             <div 
             className="text-white flex flex-col z-10">
                 <ul 
                     className={
-                        `${showAll ? "max-h-[2000px]" : "max-h-[540px]"
-                        } w-[600px] overflow-hidden my-auto transition-all duration-700 ease-in-out`}>
+                        `${showAll ? "max-h-[2000px]" : "max-h-[430px]"
+                        } w-[340px] overflow-hidden my-auto transition-all duration-1000 ease-in-out`}>
                     {data?.tracks?.map((track, index) => (
                         /* each track */
-                        <li key={index} className="flex m-6">
-                            <span className="text-6xl font-bold w-20 text-left mr-1">{index + 1}.</span>
+                        <li key={index} className="flex m-5 my-7">
+                            <span className="text-2xl font-bold w-10 text-right mr-4">{index + 1}.</span>
                             <img 
                                 src={track.image} 
                                 alt={`Portada de ${track.name}`} 
-                                className = "w-[80px] h-[80px] object-cover"
+                                className = "w-[50px] h-[50px] object-cover"
                             />
-                            <div className="ml-4">
-                                <h3 className='font-bold text-2xl'>{track.name}</h3>
-                                <p>{track.artist}</p>
+                            <div className="ml-3 max-w-[160px]">
+                                <h3 className='font-bold text-sm max-h-[48px]'>{track.name}</h3>
+                                <p className="text-xs">{track.artist}</p>
                             </div>
                         </li>
                     ))}
@@ -32,7 +32,7 @@ export default function List({ data }) {
             </div>
             <button
                     onClick={() => setShowAll(!showAll)}
-                    className="z-10 mx-auto my-3 text-white p-2 border-2 rounded-full text-sm hover:bg-white hover:text-black transition duration-300 w-40"
+                    className="z-10 mx-auto mt-12 mb-15 text-white p-2 border-2 rounded-full text-sm hover:bg-white hover:text-black transition duration-300 w-40"
                 >
                 {showAll ? "Show less" : "Show more"}
                 </button>
