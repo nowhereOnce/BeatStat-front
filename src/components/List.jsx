@@ -8,7 +8,7 @@ export default function List({ data }) {
     return (
         <div className="flex flex-col">
             <div 
-            className="text-white flex flex-col z-10">
+            className="text-white flex flex-col z-1">
                 <ul 
                     className={
                         `${showAll ? "max-h-[2000px]" : "max-h-[430px]"
@@ -32,7 +32,7 @@ export default function List({ data }) {
             </div>
             <button
                     onClick={() => setShowAll(!showAll)}
-                    className="z-10 mx-auto mt-12 mb-15 text-white p-2 border-2 rounded-full text-sm hover:bg-white hover:text-black transition duration-300 w-40"
+                    className="z-1 mx-auto mt-8 mb-15 cursor-pointer text-white p-2 border-2 rounded-full text-sm hover:bg-white hover:text-black transition duration-300 w-40"
                 >
                 {showAll ? "Show less" : "Show more"}
                 </button>

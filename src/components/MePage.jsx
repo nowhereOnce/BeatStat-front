@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import List from './List';
+import Select from './Select'
 
 const fetchTracks = async () => {
     const response = await fetch('http://localhost:8000/me/top-tracks', {credentials: 'include'});
@@ -24,10 +25,12 @@ export default function MePage() {
             {/* Background */}
             <div className="absolute inset-0 z-0 bg-[url('background-gradient.png')] bg-cover filter grayscale-40"></div>
 
-            {/* Gigant Title */}
-            <h1 className="mr-auto ml-7 text-[2.3rem] font-black text-black opacity-30 pointer-events-none select-none p-5">
-                Your Top<br />Tracks
-            </h1>
+            <div className='z-10 flex flex-col mr-auto ml-5 p-5 gap-5'>
+                <h1 className="text-[2.3rem] font-black text-black opacity-30 pointer-events-none select-none">
+                    Your Top<br />Tracks
+                </h1>
+                <Select></Select>
+            </div>
 
             {/* Tracks List */}
             <List data={data}></List>
