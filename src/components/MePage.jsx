@@ -4,9 +4,9 @@ import List from './List';
 import RangeSelect from './RangeSelect'
 
 const options = [
-  { value: 'short_term', label: 'Week' },
-  { value: 'medium_term', label: 'Month' },
-  { value: 'long_term', label: 'Year' }
+  { value: 'short_term', label: '4 weeks' },
+  { value: 'medium_term', label: '6 months' },
+  { value: 'long_term', label: '12 months' }
 ]
 
 export default function MePage() {

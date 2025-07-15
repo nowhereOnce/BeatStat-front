@@ -7,7 +7,7 @@ export default function RangeSelect({ options, onChange, selectedOption }) {
             options={options} 
             onChange={onChange}
             defaultValue={selectedOption}
-            className='z-1 w-[60%]'
+            className='z-1 w-[70%]'
             styles={{
                 control: (base, state) => ({
                     ...base,
