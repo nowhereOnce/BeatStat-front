@@ -1,23 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import List from './List';
-import Select from './Select'
+import RangeSelect from './RangeSelect'
 
-const fetchTracks = async () => {
-    const response = await fetch('http://localhost:8000/me/top-tracks', {credentials: 'include'});
-    if (!response.ok) throw new Error('Error fetching posts');
-    return response.json();
-};
+const options = [
+  { value: 'short_term', label: 'Week' },
+  { value: 'medium_term', label: 'Month' },
+  { value: 'long_term', label: 'Year' }
+]
 
 export default function MePage() {
 
+    const [selectedOption, setSelectedOption] = useState(options[0]); // Time range select
+
+    const fetchTracks = async () => {
+        const response = await fetch(
+            `http://localhost:8000/me/top-tracks?time_range=${selectedOption.value}`, 
+            {credentials: 'include'}
+        );
+        if (!response.ok) throw new Error('Error fetching posts');
+        return response.json();
+    };
+
     const { data, isLoading, error } = useQuery({
-        queryKey: ['tracks'], // Identifier for the query
+        queryKey: ['tracks', selectedOption], // Identifier for the query
         queryFn: fetchTracks, // Function to make the call
     });
+    
 
     if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>
+    if (error) return <div>Error: {error.message}</div>;
 
     return(
         <section className='relative min-h-screen flex flex-col flex-auto justify-start items-center overflow-hidden'>
@@ -25,11 +37,16 @@ export default function MePage() {
             {/* Background */}
             <div className="absolute inset-0 z-0 bg-[url('background-gradient.png')] bg-cover filter grayscale-40"></div>
 
+            {/* Gigant Title + Select time range */}
             <div className='z-10 flex flex-col mr-auto ml-5 p-5 gap-5'>
-                <h1 className="text-[2.3rem] font-black text-black opacity-30 pointer-events-none select-none">
+                <h1 className="text-[3rem] font-black text-black opacity-30 pointer-events-none select-none">
                     Your Top<br />Tracks
                 </h1>
-                <Select></Select>
+                <RangeSelect 
+                    options={options} 
+                    onChange={(option) => setSelectedOption(option)}
+                    selectedOption={selectedOption} > 
+                </RangeSelect>
             </div>
 
             {/* Tracks List */}

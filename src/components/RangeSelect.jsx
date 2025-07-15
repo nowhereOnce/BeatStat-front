@@ -1,18 +1,13 @@
 import React from 'react'
 import Select from 'react-select'
 
-const options = [
-  { value: 'week', label: 'Week' },
-  { value: 'month', label: 'Month' },
-  { value: 'year', label: 'Year' }
-]
-
-export default function MyComponent() {
+export default function RangeSelect({ options, onChange, selectedOption }) {
     return(
         <Select 
             options={options} 
-            className='z-1'
-            defaultValue={options[0]}
+            onChange={onChange}
+            defaultValue={selectedOption}
+            className='z-1 w-[60%]'
             styles={{
                 control: (base, state) => ({
                     ...base,
@@ -52,8 +47,7 @@ export default function MyComponent() {
                 
             }}    
         />
-)
-  
+    ) 
 }
 
 

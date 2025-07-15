@@ -11,11 +11,11 @@ export default function List({ data }) {
             className="text-white flex flex-col z-1">
                 <ul 
                     className={
-                        `${showAll ? "max-h-[2000px]" : "max-h-[430px]"
+                        `${showAll ? "max-h-[2000px]" : "max-h-[410px]"
                         } w-[340px] overflow-hidden my-auto transition-all duration-1000 ease-in-out`}>
                     {data?.tracks?.map((track, index) => (
                         /* each track */
-                        <li key={index} className="flex m-5 my-7">
+                        <li key={index} className="flex m-5 my-7 max-h-[50px]">
                             <span className="text-2xl font-bold w-10 text-right mr-4">{index + 1}.</span>
                             <img 
                                 src={track.image} 
@@ -23,7 +23,7 @@ export default function List({ data }) {
                                 className = "w-[50px] h-[50px] object-cover"
                             />
                             <div className="ml-3 max-w-[160px]">
-                                <h3 className='font-bold text-sm max-h-[48px]'>{track.name}</h3>
+                                <h3 className='font-bold text-sm max-h-[40px]'>{track.name}</h3>
                                 <p className="text-xs">{track.artist}</p>
                             </div>
                         </li>
