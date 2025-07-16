@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import List from './List';
 import RangeSelect from './RangeSelect'
+import Menu from './Menu';
 
 const options = [
   { value: 'short_term', label: '4 weeks' },
@@ -33,6 +34,8 @@ export default function MePage() {
 
     return(
         <section className='relative min-h-screen flex flex-col flex-auto justify-start items-center overflow-hidden'>
+
+            <Menu></Menu>
             
             {/* Background */}
             <div className="absolute inset-0 z-0 bg-[url('background-gradient.png')] bg-cover filter grayscale-40"></div>
