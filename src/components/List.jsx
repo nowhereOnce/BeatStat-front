@@ -6,9 +6,9 @@ export default function List({ data }) {
     const [showAll, setShowAll] = useState(false)
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col z-[10]">
             <div 
-            className="text-white flex flex-col z-1">
+            className="text-white flex flex-col">
                 <ul 
                     className={
                         `${showAll ? "max-h-[2000px]" : "max-h-[410px]"
