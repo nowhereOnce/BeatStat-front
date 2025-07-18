@@ -1,29 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LogOut } from 'lucide-react';
+import { logout } from '../services/auth';
 
 const LogoutButton = () => {
   const navigate = useNavigate();
   
   const handleLogout = async () => {
-    try {
-      // Llamar al endpoint de logout en el backend
-      const response = await fetch('http://localhost:8000/logout', {
-        method: 'POST',
-        credentials: 'include', // Importante para incluir cookies
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      
-      if (response.ok) {
-        // Redirigir a la página de inicio después del logout exitoso
-        navigate('/');
-      } else {
-        console.error('Error al cerrar sesión');
-      }
-    } catch (error) {
-      console.error('Error al cerrar sesión:', error);
+    const result = await logout();
+    if (result.success) {
+      navigate('/');
     }
   };
 
