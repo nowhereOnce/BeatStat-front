@@ -6,9 +6,9 @@ import LogoutButton from "./LogoutButton";
 function NavLinks(){
     return (
         <div className="md:flex-row text-center text-lg font-semibold w-full flex flex-col justify-evenly">
-            <NavLink to={"/me"} className="m-2 opacity-50 hover:opacity-100 hover:text-white transition-color duration-200 ease-in-out">Tracks</NavLink>
-            <NavLink to={"/me"} className="m-2 opacity-50 hover:opacity-100 hover:text-white transition-color duration-200 ease-in-out">Artist</NavLink>
-            <NavLink to={"/me"} className="m-2 opacity-50 hover:opacity-100 hover:text-white transition-color duration-200 ease-in-out">Playlist</NavLink>
+            <NavLink to={"/me"} className="m-2 opacity-50 hover:opacity-100 transition-color duration-200 ease-in-out">Tracks</NavLink>
+            <NavLink to={"/me"} className="m-2 opacity-50 hover:opacity-100 transition-color duration-200 ease-in-out">Artist</NavLink>
+            <NavLink to={"/me"} className="m-2 opacity-50 hover:opacity-100 transition-color duration-200 ease-in-out">Playlist</NavLink>
             <LogoutButton></LogoutButton>
         </div>
     )
@@ -18,13 +18,13 @@ export default function Menu() {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <header className="flex-wrap px-6 py-4 bg-transparent sticky top-0 z-[20] mx-auto flex w-full items-center justify-between">
-            <h1 className="font-bold text-white text-3xl m-2 opacity-50">BeatStat_</h1>
+        <header className="flex-wrap px-6 py-4 bg-transparent sticky top-0 z-[20] mx-auto flex w-full items-center justify-between text-white">
+            <h1 className="font-bold text-3xl m-2 opacity-50">BeatStat_</h1>
             <div className="hidden md:flex w-1/2">
                 <NavLinks></NavLinks>
             </div>
 
-            <div className="z-[10] md:hidden opacity-50 hover:opacity-100 hover:text-white">
+            <div className="z-[10] md:hidden opacity-50 hover:opacity-100 hover:text-white transition-all duration-200">
                 <Hamburger toggled={isOpen} toggle={setIsOpen} size={28} rounded/>
             </div>
             {/* Menú móvil con animación simple */}

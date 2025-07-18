@@ -6,6 +6,7 @@ import RangeSelect from './RangeSelect'
 import Menu from './Menu';
 import BackgroundGradient from './BackgroundGradient';
 import { fetchTracks } from '../services/fetchTracks';
+import Images3DContainer from './Images3DContailer';
 
 const options = [
   { value: 'short_term', label: '4 weeks' },
@@ -46,7 +47,7 @@ export default function MePage() {
 
     return(
         <>
-            {/* Renderizar el gradiente en el portal */}
+            {/* Render gradient in the portal */}
             {gradientContainer && createPortal(
                 <BackgroundGradient />,
                 gradientContainer
@@ -55,11 +56,9 @@ export default function MePage() {
             <section className='relative min-h-screen flex flex-col flex-auto justify-start items-center overflow-hidden'>
 
                 <Menu></Menu>
-                
-
                 {/* Gigant Title + Select time range */}
                 <div className='z-10 flex flex-col mr-auto ml-5 p-5 gap-5'>
-                    <h1 className="text-[3rem] font-black text-black opacity-30 pointer-events-none select-none">
+                    <h1 className="text-[3rem] font-black text-black opacity-40 pointer-events-none select-none">
                         Your Top<br />Tracks
                     </h1>
                     <RangeSelect 
@@ -68,26 +67,8 @@ export default function MePage() {
                         selectedOption={selectedOption} > 
                     </RangeSelect>
                 </div>
-
-                {/* Tracks List */}
                 <List data={data}></List>
-
-                {/* Artists image container:
-                This renders every artist image in reverse order
-                (because of the z-index seem broken when trying to modify the top appering elements) 
-                applies a 3d transformation and adds a shadow
-                */}
-                <div className="absolute -right-10 top-1/2 -translate-y-1/2 opacity-10 pointer-events-none select-none grayscale flex flex-col-reverse z-[10]">
-                {[...(data?.tracks || [])].slice(0,5).reverse().map((track, index) => (    
-                    <div key={index} className={`relative -my-10 ${index % 2 === 0 ? '-translate-x-[20px]' : 'translate-x-[10px]'}`}>
-                    <img
-                        src={track.artist_image}
-                        alt={`This is ${track.name}`}
-                        className="w-[200px] h-[200px] object-cover rounded-3xl rotate-x-50 rotate-z-45 drop-shadow-[20px_20px_10px_rgba(0,0,0,0.8)]"
-                    />
-                    </div>
-                ))}
-                </div>
+                <Images3DContainer data={data}></Images3DContainer>
 
             </section>
         </>
