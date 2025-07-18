@@ -57,8 +57,8 @@ export default function MePage() {
 
                 <Menu></Menu>
                 {/* Gigant Title + Select time range */}
-                <div className='z-10 flex flex-col mr-auto ml-5 p-5 gap-5'>
-                    <h1 className="text-[3rem] font-black text-black opacity-40 pointer-events-none select-none">
+                <div className='md:absolute md:left-[2vw] md:top-40 md:text-lg z-10 flex flex-col mr-auto ml-5 p-5 gap-5'>
+                    <h1 className="md:w-[22vw] md:text-[5vw] text-[3rem] font-black text-black opacity-40 pointer-events-none select-none">
                         Your Top<br />Tracks
                     </h1>
                     <RangeSelect 
