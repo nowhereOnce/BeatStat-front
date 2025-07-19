@@ -1,9 +1,9 @@
 // This file contains the functions that handle the login of the user.
 // This endpoint automatically redirects the user to the login page of the OAuth provider.
-import { API_ENDPOINTS, API_BASE_URL } from '../config';
+import { API_ENDPOINTS } from '../config';
 
 export const handleLogin = () => {
-    window.location.href = API_BASE_URL;
+    window.location.href = API_ENDPOINTS.LOGIN;
 };
 
 export const logout = async () => {
