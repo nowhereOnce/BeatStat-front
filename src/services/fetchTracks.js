@@ -2,9 +2,12 @@ import { API_ENDPOINTS } from '../config';
 
 export const fetchTracks = async (timeRange) => {
   const response = await fetch(
-    `${API_ENDPOINTS.TOP_TRACKS}?time_range=${timeRange}`,
-    { method: 'GET',
-      credentials: 'include' 
+    `${API_ENDPOINTS.TOP_TRACKS}?time_range=${timeRange}`, { 
+      method: 'GET',
+      credentials: 'include', // VERY IMPORTANT FOR COOKIES
+      headers: {
+          'Content-Type': 'application/json',
+      }, 
     }
   );
   if (!response.ok) throw new Error('Error fetching tracks');
