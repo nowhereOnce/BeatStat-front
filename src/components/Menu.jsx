@@ -7,8 +7,8 @@ function NavLinks(){
     return (
         <div className="md:flex-row text-center text-lg font-semibold w-full flex flex-col justify-evenly">
             <NavLink to={"/me"} className="m-2 opacity-50 hover:opacity-100 transition-color duration-200 ease-in-out">Tracks</NavLink>
-            <NavLink to={"/me"} className="m-2 opacity-50 hover:opacity-100 transition-color duration-200 ease-in-out">Artist</NavLink>
-            <NavLink to={"/me"} className="m-2 opacity-50 hover:opacity-100 transition-color duration-200 ease-in-out">Playlist</NavLink>
+            <NavLink to={"/me"} className="m-2 opacity-50 hover:opacity-100 transition-color duration-200 ease-in-out">Artist (soon)</NavLink>
+            <NavLink to={"/me"} className="m-2 opacity-50 hover:opacity-100 transition-color duration-200 ease-in-out">Playlist (soon)</NavLink>
             <LogoutButton></LogoutButton>
         </div>
     )
