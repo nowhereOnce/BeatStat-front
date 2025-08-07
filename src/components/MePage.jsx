@@ -7,6 +7,7 @@ import Menu from './Menu';
 import BackgroundGradient from './BackgroundGradient';
 import { fetchTracks } from '../services/fetchTracks';
 import Images3DContainer from './Images3DContailer';
+import LoadingScreen from './LoadingScreen';
 
 const options = [
   { value: 'short_term', label: '4 weeks' },
@@ -42,7 +43,7 @@ export default function MePage() {
     });
     
 
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return <LoadingScreen />;
     if (error) return <div>Error: {error.message}</div>;
 
     return(
